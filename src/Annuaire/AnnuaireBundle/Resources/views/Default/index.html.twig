@@ -1,0 +1,55 @@
+{% extends 'AnnuaireBundle::layout.html.twig' %}
+{% trans_default_domain 'AnnuaireAnnuaireBundle' %}
+
+
+{% block container %}
+  <br />
+    <br />
+     <br />
+    <br />
+<h1><center>Bienvenue à l'annuaire telephonique de l'entreprise </center></h1>
+  
+    <br />
+<div class="row">
+    <div class="col-md-12">    
+        <div class="col-md-5 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong> Rechercher des Personnes </strong>
+                </div>
+                <div class="panel-body">
+                    <em>Vous cherchez quelqu'un ??</em> <br />
+                    Cliquez sur le bouton pour accèder à la recherche. 
+                    <br />
+                    <br />
+                    <a href="{{path ('mon_annuaire_recherche')}}" class="btn btn-info btn-sm">Accéder à la recherche </a>
+                    
+                                                                
+                </div>
+            </div>
+        </div>    
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong> Recherche des ressources </strong>
+                </div>
+            
+                <div class="panel-body">
+                    <em>Vous cherchez une ressources ?? </em><br />
+                    Cliquez sur le bouton pour accèder à la recherche. 
+                    <br />
+                    <br />
+                    <a href="{{path('mon_annuaire_rechercheRes')}}" class="btn btn-info btn-sm">Accéder à la recherche</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+ <br />
+    <br />
+     <br />
+    <br />
+     <br />
+    <br />
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'AnnuaireBundle:Default:index.html.twig' %}
+
+{% block lienretour %}
+    <li><a href="{{ path('mon_annuaire_homepage')}}">Retour</a></li> 
+{% endblock %}
+
+{% block container %}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Ressources </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Ajouter Ressources</strong>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{{ path('mon_annuaire_ressource') }}" method="post">
+                            <div class="form-group col-lg-4">
+                                <label>Employee</label>
+                                {{ form_widget(form.employee, {'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Ressource</label>
+                                {{ form_widget(form.ressource, {'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Type</label>
+                                {{ form_widget(form.type, {'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Marque</label>
+                                {{ form_widget(form.marque, {'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Model</label>
+                                {{ form_widget(form.model, {'attr':{'class':'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group col-lg-8">
+                                <label>Numéro de série</label>
+                                {{ form_widget(form.numSerie, {'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="col-md-12">
+                                <input type="hidden" name="enregistrer" value="ressource">
+                                    {{ form_widget(form._token)}}
+                                <button type="submit" class="btn btn-danger pull-right" id="save-ressource">Enregistrer</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div> <!-- end container -->
+</div>
+{% endblock %}

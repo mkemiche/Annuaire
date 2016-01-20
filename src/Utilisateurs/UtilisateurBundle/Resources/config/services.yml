@@ -1,0 +1,8 @@
+services:
+  redirect.after.login:
+    class: Utilisateurs\UtilisateurBundle\Redirection\AfterLoginRedirection
+    arguments: [@router]
+
+  redirect.after.logout:
+    class: Utilisateurs\UtilisateurBundle\Redirection\AfterLogoutRedirection
+    arguments: [@router, @security.context]

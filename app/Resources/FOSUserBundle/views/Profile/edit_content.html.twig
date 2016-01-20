@@ -1,0 +1,38 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">Modifier les données </h4>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <br />
+            <div class="col-md-6">
+                <h4><strong> Modification : </strong></h4>
+                <hr />
+                <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+                    {{ form_widget(form) }}
+                    <br />
+                    <input type="submit" class="btn btn-info" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+                </form>
+            </div>
+            <div class="col-md-6">
+                <br/>
+                <br />
+                <div class="alert alert-info">
+                    <strong> Vous modifier votre profile ? </strong>
+                    <br />
+                    <em> Veuillez renseigner les champs à modifier <br />
+                        Votre mot de passe vous sera demander à la fin afin de valider la (les) modification(s).</em>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

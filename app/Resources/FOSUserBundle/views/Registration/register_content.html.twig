@@ -1,0 +1,67 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="content-wrapper" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">Veuillez insérer les données </h4>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <br />
+            <div class="col-md-6">
+                <h4><strong> Inscription : </strong></h4>
+                <hr />
+
+                <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+                    <div class="form-group" id="fos_user_registration_form">
+                        <label>Nom d'utilisateur : </label>
+                        {{ form_widget(form.username, { 'attr': {'class': 'form-control' } }) }}
+                        {{ form_errors(form.username) }}
+                        
+                        <label>Adresse e-mail : </label>
+                        {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+                        {{ form_errors(form.email) }}
+
+                        <label>Mot de passe : </label>
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
+                        {{ form_errors(form.plainPassword.first) }}
+                        
+                        <label>Confirmer mot de passe : </label>
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control' } }) }}
+                        {{ form_errors(form.plainPassword.second) }}
+
+                        {{ form_rest(form) }}
+
+                    </div>
+                    <div>
+                        <input class="btn btn-info btn-primary btn-block" type="submit" value="{{ 'registration.submit'|trans }}">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <br/>
+                <br />
+                <div class="alert alert-info">
+                    <strong> Inscription ? </strong>
+                    <br />
+                    <em> Veuillez renseigner les champs afin de vous inscrire <br />
+                    Un e-mail vous sera envoyer pour activer votre compte.</em>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

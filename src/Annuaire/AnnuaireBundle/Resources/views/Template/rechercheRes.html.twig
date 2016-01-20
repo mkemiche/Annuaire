@@ -1,0 +1,77 @@
+{% extends 'AnnuaireBundle:Default:index.html.twig' %}
+
+{% block lienretour %}
+    <li><a href="{{ path('mon_annuaire_homepage')}}">Retour</a></li> 
+{% endblock %}
+
+{% block container %}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Recherche</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Rechercher Par type ou marque de ressources.  </strong>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <!-- inserer form -->
+                    <div class ="col-md-offset-2">    
+                        <form action="{{ path('mon_annuaire_rechercheRes') }}" method="post" role="form">
+                            <div class="col-md-5 form-group">
+                                {{ form_widget(form.recherche, {'attr':{'class':'form-control'}} ) }}
+                            </div>
+                            <button type="submit" class="btn btn-success col-md-3"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>  Rechercher</button> 
+                            {{ form_widget(form) }}
+                            <br />
+                             <a class="btn btn-info col-md-3 col-md-offset-5 " href="{{ path ('mon_annuaire_rechercheRes') }}">  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  Annuler la recherche </a>
+
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>           
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Ressources existantes <i>({{ compteur }})</i> </h1>
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nom d'employee</th>
+                        <th>Ressource</th>
+                        <th>Type</th>
+                        <th>Marque</th>
+                        <th>Model</th>
+                        <th>Numéro de série</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for s in liste %}
+                        <tr>
+                            <td>{{ s.employee }}</td>
+                            <td>{{ s.ressource }}</td>
+                            <td>{{ s.type }}</td>
+                            <td>{{ s.marque }}</td>
+                            <td>{{ s.model }}</td>
+                            <td>{{ s.numSerie }}</td>
+                            {% if is_granted("ROLE_ADMIN") %}
+                           <td><a class="btn btn-danger" id="delete" href="{{ path('mon_annuaire_deleteRessource',{'id': s.id}) }}" > <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+                           {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> <!-- end container -->
+</div>
+{% endblock %}

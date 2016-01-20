@@ -1,0 +1,134 @@
+{% extends 'AnnuaireBundle:Default:index.html.twig' %}
+
+
+
+{% block lienretour %}
+    <li><a href="{{ path('mon_annuaire_homepage')}}">Retour</a></li> 
+{% endblock %}
+
+{% block container %}
+
+<div class="content-wrapper" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Enregistrement</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <form action="{{ path('mon_annuaire_enregistrer') }}" method="post">
+            <div class="col-md-12">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+                         <strong>Informations Personnelles</strong>
+                     </div>
+
+                     <div class="panel-body">
+                        <div class="col-md-12">
+                            <!-- insert form -->
+                         
+                                 
+                                
+                            <div class="form-group col-lg-2">
+                                <label>Civilité</label>
+                                {{ form_widget(form.civilite, {'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Nom</label>
+                                {{ form_widget(form.nom, {'attr':{'class':'form-control','placeholder':'Nom'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Prénom</label>
+                                {{ form_widget(form.prenom, {'attr':{'class':'form-control', 'placeholder':'Prénom'}}) }}
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>Date de Naissance</label>
+                                {{ form_widget(form.dateNaiss, {'attr':{'class':'form-control', 'placeholder':'JJ.MM.AAAA'}}) }}
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label>Adresse</label>
+                                {{ form_widget(form.adresse, {'attr':{'class':'form-control', 'placeholder':'Adresse'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Complèment d'adresse (optionnel)</label>
+                                {{ form_widget(form.complementAdr, {'attr':{'class':'form-control', 'placeholder':'Complèment d\'adresse'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Ville</label>
+                                {{ form_widget(form.ville, {'attr':{'class':'form-control', 'placeholder':'ville'}}) }}
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label>Numéro de téléphone</label>
+                                {{ form_widget(form.numTel, {'attr':{'class':'form-control', 'placeholder':'0123456789'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Numéro de téléphone du bureau</label>
+                                {{ form_widget(form.numPro, {'attr':{'class':'form-control', 'placeholder':'113'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Email</label>
+                                {{ form_widget(form.email, {'attr':{'class':'form-control', 'placeholder':'monemail@email.com'}}) }}
+                            </div>
+                         
+                        </div>
+
+                    </div>
+                 </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Informations sur le service
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                         
+                            <!-- insert form -->
+
+                            <div class="form-group col-lg-6">
+                                <label>Numéro employé</label>
+                                {{ form_widget(form.numEmp, {'attr':{'class':'form-control', 'placeholder':'ABC123'}}) }}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Fonction</label>
+                                {{ form_widget(form.fonction, {'attr':{'class':'form-control', 'placeholder':'Fonction'}}) }}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Numéro du bureau</label>
+                                {{ form_widget(form.numBureau, {'attr':{'class':'form-control', 'placeholder':'ABC123'}}) }}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Département</label>
+                                {{ form_widget(form.departement, {'attr':{'class':'form-control', 'placeholder':'Département'}}) }}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Localisation</label>
+                                {{ form_widget(form.localisation, {'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Service</label>
+                                {{ form_widget(form.nomService, {'attr':{'class':'form-control', 'placeholder':'Service'}}) }}
+                            </div>
+                          
+                            
+                          
+                         </div>
+                    </div>
+                 </div>
+            </div>
+           
+            <div class="col-md-12">
+                <input type="hidden" name="enregistrer" value="employee">
+                {{ form_widget(form._token)}}
+                <button type="submit" class="btn btn-danger pull-right" id="save-contact">suivant</button>
+            </div>
+            </form>
+        </div> <!-- end row -->
+
+    </div> <!-- END CONTAINER -->
+</div>
+ {% endblock %}

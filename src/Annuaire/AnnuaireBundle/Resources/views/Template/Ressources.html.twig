@@ -1,0 +1,89 @@
+{% extends 'AnnuaireBundle:Default:index.html.twig' %}
+
+{% block lienretour %}
+    <li><a href="{{ path('mon_annuaire_homepage')}}">Retour</a></li> 
+{% endblock %}
+
+{% block container %}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Ressources </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Ajouter Ressources</strong>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{{ path('mon_annuaire_ressource') }}" method="post">
+                            <div class="form-group col-lg-4">
+                                <label>Employee</label>
+                                {{ form_widget(form.employee, {'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Ressource</label>
+                                {{ form_widget(form.ressource, {'attr':{'class':'form-control', 'placeholder':'Exemple : ordinateur ou imprimante ...'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Type (optionnel) </label>
+                                {{ form_widget(form.type, {'attr':{'class':'form-control', 'placeholder':'Type'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Marque</label>
+                                {{ form_widget(form.marque, {'attr':{'class':'form-control', 'placeholder':'Marque'}}) }}
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Model (optionnel)</label>
+                                {{ form_widget(form.model, {'attr':{'class':'form-control' , 'placeholder':'Model'}}) }}
+                            </div>
+
+                            <div class="form-group col-lg-8">
+                                <label>Numéro de série (optionnel)</label>
+                                {{ form_widget(form.numSerie, {'attr':{'class':'form-control', 'placeholder':'ABCD123456'}}) }}
+                            </div>
+                            <div class="col-md-12">
+                                <input type="hidden" name="enregistrer" value="ressource">
+                                    {{ form_widget(form._token)}}
+                                <button type="submit" class="btn btn-danger pull-right" id="save-ressource">Enregistrer</button>
+                            </div>
+                            <a href="{{path('mon_annuaire_recherche')}}"> Terminer </a>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Ressources existantes <i>({{ compteur }})</i> </h1>
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nom d'employee</th>
+                        <th>Ressource</th>
+                        <th>Type</th>
+                        <th>Marque</th>
+                        <th>Model</th>
+                        <th>Numéro de série</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for s in liste %}
+                        <tr>
+                            
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      
+    </div> <!-- end container -->
+</div>
+{% endblock %}

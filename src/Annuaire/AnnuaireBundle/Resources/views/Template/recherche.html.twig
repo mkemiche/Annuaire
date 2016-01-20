@@ -1,0 +1,97 @@
+{% extends 'AnnuaireBundle:Default:index.html.twig' %}
+
+{% block lienRecherche %}
+    class="menu-top-active"
+{% endblock %}
+
+{% block lienretour %}
+    <li><a   href="{{ path('mon_annuaire_homepage')}}">Retour</a></li> 
+{% endblock %}
+
+{% block container %}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Recherche</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Rechercher Par Nom et/ou Prénom, par département, par service ou par localisation.  </strong>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <!-- inserer form -->
+                        <div class ="col-md-offset-2">
+                        <form action="{{ path('mon_annuaire_recherche') }}" method="post" role="form">
+                            <div class="col-md-5 form-group">
+                                {{ form_widget(form.recherche, {'attr':{'class':'form-control'}} ) }}
+                            </div>
+                            <button type="submit" class="btn btn-success col-md-3"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>  Rechercher</button> 
+                            {{ form_widget(form) }}
+                            <br />
+                             <a class="btn btn-info col-md-3 col-md-offset-5 " href="{{ path ('mon_annuaire_recherche') }}">  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  Annuler la recherche </a>
+
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>           
+        <!-- end rows -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Personnes trouvées <i>({{ compteur }})</i></h1>
+                    <table  class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th>Civilité</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Fonction</th>
+                        <th>Service</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for s in liste %}
+                        <tr>
+                            <td>{{ s.civilite }}</td>
+                            <td>{{ s.nom }}</td>
+                            <td>{{ s.prenom }}</td>
+                            <td>{{ s.fonction }}</td>
+                            <td>{{ s.nomService }}</td>
+                           <td><a class="btn btn-success" href="{{ path ('mon_annuaire_info', { 'id' : s.id }) }}"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
+
+                           {% if is_granted("ROLE_ADMIN") %}
+                           <td><a class="btn btn-info" href="{{ path ('mon_annuaire_editer', { 'id' : s.id }) }}"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+                           <td><a class="btn btn-danger" id="delete" href="{{ path('mon_annuaire_delete',{'id': s.id}) }}" > <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+                           {% endif %}
+                     </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                    </div>
+               
+            </div>
+        </div>
+
+
+            </div>
+
+        </div>
+        <div class="row">
+
+            <!-- insert result -->
+
+        </div>
+
+    </div> <!-- end container -->
+</div> <!-- end content-wrapper -->
+
+{% endblock %}

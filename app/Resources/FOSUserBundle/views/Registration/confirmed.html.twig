@@ -1,0 +1,23 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+    {% if app.session is not empty %}
+        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
+    {% endif %}
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+    <div class="alert alert-danger">
+                    <strong><center> Bienvenue dans l'annuaire téléphonique de DANONE </center></strong>
+                    <br />
+                    <em><strong>Première inscription ?</strong></em> <br/>
+                    <em> Afin de bien faciliter la recherche, vous devez complèter votre profile et rensigner tout les champs vous concernent. <br />
+                    Cliquer sur le lien ci dessous </em> <br />
+                    <a href = "{{path('mon_annuaire_enregistrer')}}" class=""> Complèter mon profil </a>
+
+                </div>
+                </div>
+                </div>
+
+{% endblock fos_user_content %}

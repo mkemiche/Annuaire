@@ -1,0 +1,41 @@
+mon_annuaire_homepage:
+    pattern:  /index/
+    defaults: { _controller: AnnuaireBundle:Default:index }
+
+mon_annuaire_contact:
+    pattern:  /contact
+    defaults: { _controller: AnnuaireBundle:Template:contact }
+
+mon_annuaire_enregistrer:
+    pattern:  /enregistrer
+    defaults: { _controller: AnnuaireBundle:Template:enregistrer }
+
+mon_annuaire_recherche:
+    pattern:  /recherche
+    defaults: { _controller: AnnuaireBundle:Template:recherche }
+
+mon_annuaire_rechercheRes:
+    pattern:  /rechercheRessources
+    defaults: { _controller: AnnuaireBundle:Template:rechercheRes }
+
+mon_annuaire_ressource:
+    pattern:  /ressources
+    defaults: { _controller: AnnuaireBundle:Template:ressources }
+
+mon_annuaire_info:
+    pattern:  /info/{id}
+    defaults: { _controller: AnnuaireBundle:Template:afficher }
+
+mon_annuaire_editer:
+    pattern:  /editer/{id}
+    defaults: { _controller: AnnuaireBundle:Template:editer }
+
+mon_annuaire_delete:
+    pattern:  /delete/{id}
+    defaults: { _controller: AnnuaireBundle:Template:delete }
+
+mon_annuaire_deleteRessource:
+    pattern:  /deleteRessource/{id}
+    defaults: { _controller: AnnuaireBundle:Template:deleteRessource }
+
+

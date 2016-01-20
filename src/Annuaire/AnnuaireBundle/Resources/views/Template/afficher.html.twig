@@ -1,0 +1,98 @@
+
+{% extends 'AnnuaireBundle:Default:index.html.twig' %}
+
+{% block lienretour %}
+    <li><a href="{{ path('mon_annuaire_homepage')}}">Retour</a></li> 
+{% endblock %}
+
+{% block container %}
+    <div class="content-wrapper" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+         xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">Mes Infos</h1>
+                </div>
+            </div>
+             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+            <div class="row">
+                    <div class="col-md-12">
+                         <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong> Informations Personnelles </strong>
+                            </div>
+
+                            <div class="panel-body">
+                                
+                                <div class="col-md-6">
+                                    <h3> <strong>{{ employee ? employee.civilite }}</strong>
+                                    <nobr />  <strong> {{ employee ? employee.nom }}</strong>
+                                    <strong>{{ employee ? employee.prenom }}</strong>
+                                
+                                    <hr />
+                                    <h4>{{ employee ? employee.adresse }} <br /></h4>
+                                    <h4>{{ employee ? employee.complementAdr }}<br /></h4>
+                                    <h4>{{ employee ? employee.ville }}</h4>
+                                </div>
+                                <div class="col-md-6">
+                                   <h3>portable : {{ employee ? employee.numTel }}</h3>
+                                   <hr />
+                                   <h3>Telephone Bureau : {{ employee ? employee.numPro }}</h3>
+                                   <hr />
+                                   <h3>E-mail : {{ employee ? employee.Email }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong> Informations Professionnelles </strong>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <h2><center>{{ employee ? employee.numEmp }}</center></h2>
+                                        <hr />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong> Département : {{ employee ? employee.departement }}</strong><br />
+                                        <strong> Localisation : {{ employee ? employee.localisation }}</strong><br />
+                                        <strong> Fonction : {{ employee ? employee.fonction }}</strong><br />
+                                        <strong> Numéro de Bureau : {{ employee ? employee.numbureau }}</strong><br />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong> Informations sur les Ressources attribuées </strong>
+                                </div>
+                                <div class="panel-body">
+                                    {% for r in listeRessources %}
+                                    <div class="col-md-6">
+                                        
+                                        <strong> Ressource : {{ r ? r.ressource }}</strong><br />
+                                        <strong> Type : {{ r ? r.type }}</strong><br />
+                                        <strong> Marque : {{ r ? r.marque }}</strong><br />
+                                        <strong> Model : {{ r ? r.model }}</strong><br />
+                                        <strong> Numéro de Serie : {{ r ? r.numSerie }}</strong><br />
+                                        
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="col-md-12">
+                            {% if app.session  %}
+                            <a class="btn btn-info pull-right" href="{{ path ('mon_annuaire_editer', { 'id' : employee.id }) }}"> <span class="glyphicon glyphicon-edit" aria-hidden="true"> Modifier Mes Infos</span></a>
+                            {% endif %}
+                            </div> 
+
+            </div> <!-- end row -->
+            {% endif %} 
+        </div> <!-- END CONTAINER -->
+    </div>
+
+{% endblock %}
